@@ -43,7 +43,6 @@ document.addEventListener("visibilitychange", function() {
             start = null;
             document.getElementById('length').style.height = ((totalUnfocusedTime + document.getElementById('length').offsetHeight) / 10) + "px";
             console.log(totalUnfocusedTime);
-            extendPageHeight();
         }
     }
 });
