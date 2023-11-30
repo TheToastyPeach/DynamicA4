@@ -2,11 +2,27 @@
 
 
 body {
-    
+    background-image: linear-gradient( to bottom, white, #f26ca7 70%);
+}
+
+h1 {
+    font-size: 5rem;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 35px;
 }
 
 #length {
-    background-image: linear-gradient(175deg, #F0A7A0, #f26ca7);
+    background-image: linear-gradient(180deg, #F0A7A0, #f26ca7);
     min-height: 100vh;
+    border-radius: 35px 35px 0px 0px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    
 }
+
+
 

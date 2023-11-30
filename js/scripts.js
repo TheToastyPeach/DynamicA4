@@ -34,6 +34,7 @@ let oldHeight = 0;
 //checks when a tab is not the focus anymore
 document.addEventListener("visibilitychange", function() {
     if (document.hidden) {
+
         //starts a timer with "date.now()" 
         start = Date.now();
         // oldHeight = document.documentElement.scrollHeight;
@@ -46,7 +47,7 @@ document.addEventListener("visibilitychange", function() {
             totalUnfocusedTime += Date.now() - start;
 
             //sets the height of the div to the total time in milliseconds divided by 10
-            document.getElementById('length').style.height = ((totalUnfocusedTime + oldHeight) / 10) + "px";
+            document.getElementById('length').style.height = ((totalUnfocusedTime + oldHeight) / 20) + "px";
             console.log(totalUnfocusedTime);
 
             //adds the total time to the old height so the page doesn't reset
