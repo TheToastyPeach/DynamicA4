@@ -27,6 +27,9 @@
 //     }
 // });
 
+
+
+
 let start;
 let totalUnfocusedTime = 0;
 let oldHeight = 0;
