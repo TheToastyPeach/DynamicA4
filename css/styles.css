@@ -13,17 +13,43 @@ h1 {
     padding: 35px;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 #length {
     background-image: linear-gradient(180deg, #F0A7A0, #f26ca7);
     min-height: 100vh;
+    min-width: 90vw;
     border-radius: 35px 35px 0px 0px;
     margin-top: 45px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 0px;
-    
 }
 
+.container {
+    position: relative;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px;
+}
+
+
+ .container .element {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 50%;
+    scale: 0.8;
+}
 
 
 

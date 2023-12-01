@@ -64,3 +64,29 @@ document.addEventListener("visibilitychange", function() {
     }
 });
 
+
+let container = document.querySelector('.container'); 
+for (let i = 1; i <= 200; i++){
+    let dot = document.createElement('div');
+    dot.classList.add('element');
+    container.appendChild(dot);
+}
+
+
+const dots = document.querySelectorAll('.element');
+anime({
+    targets: dots,
+    scale: [
+        {value: .1, duration: 200, easing: 'easeOutSine'},
+        {value: 1, duration: 400, easing: 'easeInOutQuad'}
+    ],
+    translateX: anime.stagger(10, {grid: [25, 8], from: 'center', axis: 'x'}),
+    translateY: anime.stagger(10, {grid: [25, 8], from: 'center', axis: 'y'}),
+    delay: anime.stagger(70, {grid: [25, 8], from: 'center'}),
+    direction: 'alternate',
+    loop: true,
+})
+
+
+
+
