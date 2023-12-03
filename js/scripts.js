@@ -64,25 +64,37 @@ document.addEventListener("visibilitychange", function() {
     }
 });
 
-
+//creating dot elements on the page ( of them)
 let container = document.querySelector('.container'); 
-for (let i = 1; i <= 200; i++){
+for (let i = 1; i <= 150; i++){
+    //main moving elements
     let dot = document.createElement('div');
     dot.classList.add('element');
     container.appendChild(dot);
 }
 
 
+let breathDurationMultiplier = 2;
+let breathHold = 5;
+//animating the dots
 const dots = document.querySelectorAll('.element');
 anime({
     targets: dots,
     scale: [
-        {value: .1, duration: 200, easing: 'easeOutSine'},
-        {value: 1, duration: 400, easing: 'easeInOutQuad'}
+        {value: .1, duration: breathDurationMultiplier * 100, easing: 'easeOutSine'},
+        {value: 1, duration: breathDurationMultiplier * 400, easing: 'easeInOutQuad'}
     ],
-    translateX: anime.stagger(10, {grid: [25, 8], from: 'center', axis: 'x'}),
-    translateY: anime.stagger(10, {grid: [25, 8], from: 'center', axis: 'y'}),
-    delay: anime.stagger(70, {grid: [25, 8], from: 'center'}),
+    translateX: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'x'}),
+    translateY: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'y', duration: breathDurationMultiplier * 100}),
+
+    delay: anime.stagger( breathDurationMultiplier * 50, {grid: [25, 6], from: 'center', duration: breathDurationMultiplier * 100}),
+
+    //transition effects for dots
+    backgroundColor: '#ffffff',
+    borderRadius: ['30%', '50%'],
+
+    //how long the animation pauses at the peak
+    endDelay: breathHold * 1000,
     direction: 'alternate',
     loop: true,
 })
