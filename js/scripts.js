@@ -74,8 +74,6 @@ for (let i = 1; i <= 150; i++){
 }
 
 
-let breathDurationMultiplier = 2;
-let breathHold = 5;
 
 //animating the dots
 const dots = document.querySelectorAll('.element');
@@ -83,23 +81,29 @@ const dots = document.querySelectorAll('.element');
 
 animate = anime({
         targets: dots,
-        scale: [
-            {value: .1, duration: breathDurationMultiplier * 100, easing: 'easeOutSine'},
-            {value: 1, duration: breathDurationMultiplier * 400, easing: 'easeInOutQuad'}
-        ],
-        translateX: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'x'}),
-        translateY: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'y', duration: breathDurationMultiplier * 100}),
-    
-        delay: anime.stagger( breathDurationMultiplier * 50, {grid: [25, 6], from: 'center', duration: breathDurationMultiplier * 100}),
-    
-        //transition effects for dots
-        backgroundColor: '#ffffff',
-        borderRadius: ['30%', '50%'],
-    
-        //how long the animation pauses at the peak
-        endDelay: breathHold * 1000,
-        direction: 'alternate',
+        rotateZ: anime.stagger(10, {grid: [25, 6], from: 'center', axis: 'x'}),
+        borderRadius: ['0%', '50%'],
         loop: true,
+        duration: 10000,
+        easing: 'easeInOutSine',
+        direction: 'alternate',
+        // scale: [
+        //     {value: .1, duration: breathDurationMultiplier * 100, easing: 'easeOutSine'},
+        //     {value: 1, duration: breathDurationMultiplier * 400, easing: 'easeInOutQuad'}
+        // ],
+        // translateX: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'x'}),
+        // translateY: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'y', duration: breathDurationMultiplier * 100}),
+    
+        // delay: anime.stagger( breathDurationMultiplier * 50, {grid: [25, 6], from: 'center', duration: breathDurationMultiplier * 100}),
+    
+        // //transition effects for dots
+        // backgroundColor: '#ffffff',
+        // borderRadius: ['30%', '50%'],
+    
+        // //how long the animation pauses at the peak
+        // endDelay: breathHold * 1000,
+        // direction: 'alternate',
+
 });
 
 
@@ -110,21 +114,13 @@ let buttonC = document.getElementById('custom');
 
 //Button events 
 buttonS.addEventListener('click', function() {
-    breathDurationMultiplier = 2;
-    breathHold = 0;
-    console.log(breathDurationMultiplier);
-    console.log(breathHold);
     animate.restart(); 
-    reanime();
+    reanime(30, 50, 2, 0.5);
 });
 
 buttonH.addEventListener('click', function() {
-    breathDurationMultiplier = 3;
-    breathHold = 2;
-    console.log(breathDurationMultiplier);
-    console.log(breathHold);
     animate.restart();
-    reanime();
+    reanime(0, 15, 3, 3);
 
 });
 
@@ -133,7 +129,7 @@ buttonC.addEventListener('click', function() {
 });
 
 //reanimate the dots with the new values
-function reanime() {
+function reanime(borderRadiusStart, borderRadiusEnd, breathDurationMultiplier, breathHold) {
     animate = anime({
         targets: dots,
         scale: [
@@ -147,7 +143,7 @@ function reanime() {
     
         //transition effects for dots
         backgroundColor: '#ffffff',
-        borderRadius: ['30%', '50%'],
+        borderRadius: [borderRadiusStart + '%', borderRadiusEnd + '%'],
     
         //how long the animation pauses at the peak
         endDelay: breathHold * 1000,
