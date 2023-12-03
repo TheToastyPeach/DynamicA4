@@ -49,11 +49,10 @@ main {
     margin: 10px;
     padding: 10px;
     border-radius: 5px;
-    border: 2px solid #f26ca7;
+    border: none;
     background-color: transparent;
     color: white;
     font-size: 1.5rem;
-    font-weight: bold;
 
 }
 

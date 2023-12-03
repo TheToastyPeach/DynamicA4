@@ -76,29 +76,82 @@ for (let i = 1; i <= 150; i++){
 
 let breathDurationMultiplier = 2;
 let breathHold = 5;
+
 //animating the dots
 const dots = document.querySelectorAll('.element');
-anime({
-    targets: dots,
-    scale: [
-        {value: .1, duration: breathDurationMultiplier * 100, easing: 'easeOutSine'},
-        {value: 1, duration: breathDurationMultiplier * 400, easing: 'easeInOutQuad'}
-    ],
-    translateX: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'x'}),
-    translateY: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'y', duration: breathDurationMultiplier * 100}),
-
-    delay: anime.stagger( breathDurationMultiplier * 50, {grid: [25, 6], from: 'center', duration: breathDurationMultiplier * 100}),
-
-    //transition effects for dots
-    backgroundColor: '#ffffff',
-    borderRadius: ['30%', '50%'],
-
-    //how long the animation pauses at the peak
-    endDelay: breathHold * 1000,
-    direction: 'alternate',
-    loop: true,
-})
 
 
+animate = anime({
+        targets: dots,
+        scale: [
+            {value: .1, duration: breathDurationMultiplier * 100, easing: 'easeOutSine'},
+            {value: 1, duration: breathDurationMultiplier * 400, easing: 'easeInOutQuad'}
+        ],
+        translateX: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'x'}),
+        translateY: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'y', duration: breathDurationMultiplier * 100}),
+    
+        delay: anime.stagger( breathDurationMultiplier * 50, {grid: [25, 6], from: 'center', duration: breathDurationMultiplier * 100}),
+    
+        //transition effects for dots
+        backgroundColor: '#ffffff',
+        borderRadius: ['30%', '50%'],
+    
+        //how long the animation pauses at the peak
+        endDelay: breathHold * 1000,
+        direction: 'alternate',
+        loop: true,
+});
 
 
+//Get the buttons 
+let buttonS = document.getElementById('space');
+let buttonH = document.getElementById('held');
+let buttonC = document.getElementById('custom');
+
+//Button events 
+buttonS.addEventListener('click', function() {
+    breathDurationMultiplier = 2;
+    breathHold = 0;
+    console.log(breathDurationMultiplier);
+    console.log(breathHold);
+    animate.restart(); 
+    reanime();
+});
+
+buttonH.addEventListener('click', function() {
+    breathDurationMultiplier = 3;
+    breathHold = 2;
+    console.log(breathDurationMultiplier);
+    console.log(breathHold);
+    animate.restart();
+    reanime();
+
+});
+
+buttonC.addEventListener('click', function() {
+ 
+});
+
+//reanimate the dots with the new values
+function reanime() {
+    animate = anime({
+        targets: dots,
+        scale: [
+            {value: .1, duration: breathDurationMultiplier * 100, easing: 'easeOutSine'},
+            {value: 1, duration: breathDurationMultiplier * 400, easing: 'easeInOutQuad'}
+        ],
+        translateX: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'x'}),
+        translateY: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'y', duration: breathDurationMultiplier * 100}),
+    
+        delay: anime.stagger( breathDurationMultiplier * 50, {grid: [25, 6], from: 'center', duration: breathDurationMultiplier * 100}),
+    
+        //transition effects for dots
+        backgroundColor: '#ffffff',
+        borderRadius: ['30%', '50%'],
+    
+        //how long the animation pauses at the peak
+        endDelay: breathHold * 1000,
+        direction: 'alternate',
+        loop: true,
+    });
+}
