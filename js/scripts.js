@@ -50,7 +50,7 @@ document.addEventListener("visibilitychange", function() {
             totalUnfocusedTime += Date.now() - start;
 
             //sets the height of the div to the total time in milliseconds divided by 10
-            document.getElementById('length').style.height = ((totalUnfocusedTime + oldHeight) / 2) + "px";
+            document.getElementById('length').style.height = ((totalUnfocusedTime + oldHeight) / 4) + "px";
             console.log(totalUnfocusedTime);
 
             //adds the total time to the old height so the page doesn't reset
@@ -184,7 +184,7 @@ function createMessage(offPageTime) {
     }
 
     let h2 = document.createElement('h2');
-    h2.textContent = "You were off this page for " + offPageTime + " seconds";
+    h2.textContent = "You were off this page for " + Math.round(offPageTime) + " seconds";
 
     let button = document.createElement('button');
     button.textContent = 'Back to Top'; 
