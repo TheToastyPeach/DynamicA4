@@ -50,20 +50,23 @@ document.addEventListener("visibilitychange", function() {
             totalUnfocusedTime += Date.now() - start;
 
             //sets the height of the div to the total time in milliseconds divided by 10
-            document.getElementById('length').style.height = ((totalUnfocusedTime + oldHeight) / 20) + "px";
+            document.getElementById('length').style.height = ((totalUnfocusedTime + oldHeight) / 2) + "px";
             console.log(totalUnfocusedTime);
 
             //adds the total time to the old height so the page doesn't reset
             oldHeight = totalUnfocusedTime + oldHeight;
             console.log(oldHeight);
 
+            createMessage(totalUnfocusedTime / 1000);
+
             //resets the start values
             start = null;
             totalUnfocusedTime = 0;
 
+            
 
-        }
-    }
+        };
+    };
 });
 
 //creating dot elements on the page ( of them)
@@ -73,7 +76,7 @@ for (let i = 1; i <= 150; i++){
     let dot = document.createElement('div');
     dot.classList.add('element');
     container.appendChild(dot);
-}
+};
 
 
 
@@ -101,22 +104,23 @@ let buttonC = document.getElementById('custom');
 
 //Button events 
 buttonS.addEventListener('click', function() {
+    //if you don't restart the animation and remove the dots, they will lag the computer 
     animate.restart();
     animate.remove(dots);
     reanime(30, 50, 2, 0.5);
+    slider.style.display = 'none';
 });
 
 buttonH.addEventListener('click', function() {
     animate.restart();
     animate.remove(dots);
     reanime(0, 15, 3, 3);
+    slider.style.display = 'none';
 });
 
 
 buttonC.addEventListener('click', function() {
     slider.style.display = 'flex';
-    animate.restart();
-    reanime(30, 50, range1Value * 0.1, range1Value * 0.09);
 });
 
 //pop up sliders 
@@ -128,6 +132,9 @@ let range1Value = range1.value;
 range1.addEventListener('input', function() {
     range1Value = this.value;
     console.log(range1Value);
+    animate.restart();
+    animate.remove(dots);
+    reanime(30, 50, range1Value * 0.1, range1Value * 0.05);
 });
 
 let range2 = document.getElementById('range2');
@@ -136,6 +143,9 @@ let range2Value = range2.value;
 range2.addEventListener('input', function() {
     range2Value = this.value;
     console.log(range2Value);
+    animate.restart();
+    animate.remove(dots);
+    reanime(30, 50, range1Value * 0.1, range1Value * 0.05);
 });
 
 
@@ -162,4 +172,45 @@ function reanime(borderRadiusStart, borderRadiusEnd, breathDurationMultiplier, b
         direction: 'alternate',
         loop: true,
     });
+};
+
+
+function createMessage(offPageTime) {
+    let messageDiv = document.getElementById('message');
+
+    //Remove elements from the "message" div
+    while (messageDiv.firstChild) {
+        messageDiv.removeChild(messageDiv.firstChild);
+    }
+
+    let h2 = document.createElement('h2');
+    h2.textContent = "You were off this page for " + offPageTime + " seconds";
+
+    let button = document.createElement('button');
+    button.textContent = 'Back to Top'; 
+
+     // Add an event listener to the button
+     button.addEventListener('click', function() {
+        shrinkPage();
+    });
+
+    messageDiv.appendChild(h2);
+    messageDiv.appendChild(button);
+};
+
+function shrinkPage() {
+    const decreasePix = 5; 
+    let lengthElement = document.getElementById('length');
+    let currentHeight = lengthElement.offsetHeight; // Get the height of the 'length' div
+
+    const decreaseHeight = () => {
+        if (currentHeight > 0) {
+            currentHeight -= decreasePix;
+            lengthElement.style.height = currentHeight + "px";
+            //Delay the recursion
+            setTimeout(decreaseHeight, 15); 
+        }
+    };
+    //Start decreasing the height
+    decreaseHeight(); 
 }
