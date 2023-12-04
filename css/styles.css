@@ -31,12 +31,14 @@ main {
     align-items: center;
 }
 
+/* button 3 div  */
 #customSpeedContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* slider div style */
 #customSpeedSlider {
     display: flex;
     flex-direction: column;
@@ -45,10 +47,36 @@ main {
     display: none;
 }
 
+/* slider styles */
 #customSpeedSlider input {
-    margin: 0;
-    padding: 5px;
+    appearance: none;
+    height: 2px; 
+    background: #ffffff;
+    outline: none; 
+    margin: 10px;
 }
+
+/* chrome handel change */
+#customSpeedSlider input::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    border-radius: 50%;
+    width: 18px; 
+    height: 18px; 
+    background: #f26ca7;
+    cursor: pointer; 
+}
+
+/* other browser handel change */
+#customSpeedSlider input::-moz-range-thumb {
+    border-radius: 50%;
+    width: 18px; 
+    height: 18px; 
+    background: #f26ca7;
+    cursor: pointer; 
+}
+
+
+
 
 #Ui {
     display: flex;

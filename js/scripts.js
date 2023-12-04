@@ -90,8 +90,7 @@ animate = anime({
 });
 
 
-//check if the suer has selected a custom speed
-let userSelect3 = false;
+
 
 //Get the buttons 
 let buttonS = document.getElementById('space');
@@ -100,22 +99,20 @@ let buttonC = document.getElementById('custom');
 
 //Button events 
 buttonS.addEventListener('click', function() {
-    userSelect3 = false;
     animate.restart(); 
     reanime(30, 50, 2, 0.5);
 });
 
 buttonH.addEventListener('click', function() {
-    userSelect3 = false;
     animate.restart();
     reanime(0, 15, 3, 3);
 });
 
 
 buttonC.addEventListener('click', function() {
-    //custom speed 
-    userSelect3 = true;
     slider.style.display = 'flex';
+    animate.restart();
+    reanime(30, 50, range1Value * 0.1, range1Value * 0.09);
 });
 
 //pop up sliders 
