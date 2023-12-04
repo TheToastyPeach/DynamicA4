@@ -87,25 +87,11 @@ animate = anime({
         duration: 10000,
         easing: 'easeInOutSine',
         direction: 'alternate',
-        // scale: [
-        //     {value: .1, duration: breathDurationMultiplier * 100, easing: 'easeOutSine'},
-        //     {value: 1, duration: breathDurationMultiplier * 400, easing: 'easeInOutQuad'}
-        // ],
-        // translateX: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'x'}),
-        // translateY: anime.stagger(5, {grid: [25, 6], from: 'center', axis: 'y', duration: breathDurationMultiplier * 100}),
-    
-        // delay: anime.stagger( breathDurationMultiplier * 50, {grid: [25, 6], from: 'center', duration: breathDurationMultiplier * 100}),
-    
-        // //transition effects for dots
-        // backgroundColor: '#ffffff',
-        // borderRadius: ['30%', '50%'],
-    
-        // //how long the animation pauses at the peak
-        // endDelay: breathHold * 1000,
-        // direction: 'alternate',
-
 });
 
+
+//check if the suer has selected a custom speed
+let userSelect3 = false;
 
 //Get the buttons 
 let buttonS = document.getElementById('space');
@@ -114,19 +100,44 @@ let buttonC = document.getElementById('custom');
 
 //Button events 
 buttonS.addEventListener('click', function() {
+    userSelect3 = false;
     animate.restart(); 
     reanime(30, 50, 2, 0.5);
 });
 
 buttonH.addEventListener('click', function() {
+    userSelect3 = false;
     animate.restart();
     reanime(0, 15, 3, 3);
-
 });
+
 
 buttonC.addEventListener('click', function() {
- 
+    //custom speed 
+    userSelect3 = true;
+    slider.style.display = 'flex';
 });
+
+//pop up sliders 
+let slider = document.getElementById('customSpeedSlider');
+let range1 = document.getElementById('range1');
+let range1Value = range1.value;
+
+//getting the range of slider 1 and 2 
+range1.addEventListener('input', function() {
+    range1Value = this.value;
+    console.log(range1Value);
+});
+
+let range2 = document.getElementById('range2');
+let range2Value = range2.value;
+
+range2.addEventListener('input', function() {
+    range2Value = this.value;
+    console.log(range2Value);
+});
+
+
 
 //reanimate the dots with the new values
 function reanime(borderRadiusStart, borderRadiusEnd, breathDurationMultiplier, breathHold) {
