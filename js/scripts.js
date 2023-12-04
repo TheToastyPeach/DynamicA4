@@ -60,6 +60,8 @@ document.addEventListener("visibilitychange", function() {
             //resets the start values
             start = null;
             totalUnfocusedTime = 0;
+
+
         }
     }
 });
@@ -99,12 +101,14 @@ let buttonC = document.getElementById('custom');
 
 //Button events 
 buttonS.addEventListener('click', function() {
-    animate.restart(); 
+    animate.restart();
+    animate.remove(dots);
     reanime(30, 50, 2, 0.5);
 });
 
 buttonH.addEventListener('click', function() {
     animate.restart();
+    animate.remove(dots);
     reanime(0, 15, 3, 3);
 });
 
