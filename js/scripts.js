@@ -187,6 +187,7 @@ function createMessage(offPageTime) {
 
     // Add an event listener to the button
     button.addEventListener('click', function() {
+        changeMessage("Lets take a moment to breathe");
         shrinkPage();
     });
 
@@ -197,16 +198,19 @@ function createMessage(offPageTime) {
 
 function changeMessage(newText) {
     let messageDiv = document.getElementById('message');
-    let textNode = messageDiv.firstChild;
+    let h2 = messageDiv.getElementsByTagName('h2')[0];
+    let but = messageDiv.getElementsByTagName('button')[0];
     anime({
-        targets: textNode,
+        targets: messageDiv,
         opacity: 0,
         duration: 1000, 
         easing: 'easeInOutQuad',
+        
         complete: function() {
-            textNode.textContent = newText;
+            h2.textContent = newText;
+            but.style.display = 'none';
             anime({
-                targets: textNode,
+                targets: messageDiv,
                 opacity: 1,
                 duration: 1000, 
                 easing: 'easeInOutQuad'
