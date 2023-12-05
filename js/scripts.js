@@ -178,10 +178,6 @@ function reanime(borderRadiusStart, borderRadiusEnd, breathDurationMultiplier, b
 function createMessage(offPageTime) {
     let messageDiv = document.getElementById('message');
 
-    //Remove elements from the "message" div
-    while (messageDiv.firstChild) {
-        messageDiv.removeChild(messageDiv.firstChild);
-    }
 
     let h2 = document.createElement('h2');
     h2.textContent = "You were off this page for " + Math.round(offPageTime) + " seconds";
@@ -189,8 +185,8 @@ function createMessage(offPageTime) {
     let button = document.createElement('button');
     button.textContent = 'Back to Top'; 
 
-     // Add an event listener to the button
-     button.addEventListener('click', function() {
+    // Add an event listener to the button
+    button.addEventListener('click', function() {
         shrinkPage();
     });
 
@@ -198,17 +194,43 @@ function createMessage(offPageTime) {
     messageDiv.appendChild(button);
 };
 
+
+function changeMessage(newText) {
+    let messageDiv = document.getElementById('message');
+    let textNode = messageDiv.firstChild;
+    anime({
+        targets: textNode,
+        opacity: 0,
+        duration: 1000, 
+        easing: 'easeInOutQuad',
+        complete: function() {
+            textNode.textContent = newText;
+            anime({
+                targets: textNode,
+                opacity: 1,
+                duration: 1000, 
+                easing: 'easeInOutQuad'
+            });
+        }
+    });
+}
+
+
 function shrinkPage() {
     const decreasePix = 5; 
     let lengthElement = document.getElementById('length');
-    let currentHeight = lengthElement.offsetHeight; // Get the height of the 'length' div
+    // Get the height of the 'length' div
+    let currentHeight = lengthElement.offsetHeight; 
 
     const decreaseHeight = () => {
-        if (currentHeight > 0) {
+        if (currentHeight > 430) {
             currentHeight -= decreasePix;
             lengthElement.style.height = currentHeight + "px";
             //Delay the recursion
             setTimeout(decreaseHeight, 15); 
+        }
+        else if (currentHeight < 450) {
+            changeMessage("Lets take a moment to breathe");
         }
     };
     //Start decreasing the height
