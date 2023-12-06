@@ -38,6 +38,10 @@ main {
     align-items: center;
 }
 
+button {
+    font-family: 'Quicksand', sans-serif;
+}
+
 /* button 3 div  */
 #customSpeedContainer {
     display: flex;
@@ -69,7 +73,7 @@ main {
     border-radius: 50%;
     width: 18px; 
     height: 18px; 
-    background: #361FAD;
+    background: #F7996E;
     cursor: pointer; 
 }
 
@@ -83,7 +87,7 @@ main {
     border-radius: 50%;
     width: 18px; 
     height: 18px; 
-    background: #361FAD;
+    background: #F7996E;
     cursor: pointer; 
 }
 
@@ -163,7 +167,7 @@ main {
     width: 50px; 
     height: 30px;
     border-radius: 50%;
-    border: white 2px solid;
+    border: #F7996E 2px solid;
     background-color: transparent;
     color: white;
     font-size: 1.5rem;
@@ -198,7 +202,7 @@ main {
     position: relative;
     width: 20px;
     height: 20px;
-    background-color:  #eec8c5;
+    background-color:  #F0A7A0;
     /* border-radius: 50%; */
     scale: 0.8;
 }
@@ -217,7 +221,7 @@ main {
 .tutorial-box {
     visibility: hidden;
     background-color: white;
-    color: #fc655a;
+    color: #03012C;
     text-align: left;
     border-radius: 5px;
     padding: 15px;
@@ -244,12 +248,13 @@ main {
     display: none;
 }
 
+
 #graphics .circle {
     position: absolute;
     right: 7%;
     top: 20%;
     width: 350px;
-    height: 340px;
+    height: 347px;
     border-radius: 50%;
     background-color: #F7996E
 };

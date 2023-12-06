@@ -45,7 +45,7 @@ document.addEventListener("visibilitychange", function() {
     };
 });
 
-//creating dot elements on the page ( of them)
+//creating dot elements on the page (150 of them)
 let container = document.querySelector('.container'); 
 for (let i = 1; i <= 150; i++){
     //main moving elements
@@ -248,7 +248,7 @@ function animateSpinningShape(button) {
     shape.style.width = '50px';
     shape.style.height = '50px';
     shape.style.borderRadius = '25%';
-    shape.style.backgroundColor = '#fc655a42';
+    shape.style.backgroundColor = '#f0a7a04b';
     shape.style.top = button.offsetTop + 'px';
 
     //This is rough but its a ton of work to center all the buttons,
@@ -306,14 +306,14 @@ function createArrow () {
 };
 
 //rotating circle 
-let circles = document.getElementById('.circle');
+let circles = document.querySelectorAll('.circle');
 
 anime({
   targets: circles,
-  rotate: '1turn',
+  rotate: 360,
   loop: true,
   easing: 'linear',
-  duration: 1000,
+  duration: 5000,
 });
 
 
