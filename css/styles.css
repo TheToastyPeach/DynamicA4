@@ -1,11 +1,9 @@
-html {
+html, body {
+    margin: 0;
+    padding: 0;
     background-image: linear-gradient( to bottom, #F9B9F2 5%, #03012C 60%);
     min-height: 100vh;
     font-family: 'Quicksand', sans-serif;
-}
-
-body {
-    background-image: linear-gradient( to bottom, #F9B9F2 5%, #03012C 60%);
 }
 
 h1 {
@@ -41,6 +39,8 @@ main {
 button {
     font-family: 'Quicksand', sans-serif;
 }
+
+
 
 /* button 3 div  */
 #customSpeedContainer {
@@ -181,7 +181,7 @@ button {
     min-height: 50vh;
     min-width: 75vw;
     border-radius: 35px 35px 0px 0px;
-    margin-top: 75px;
+    margin-top: 85px;
     margin-left: 25%;
     margin-right: 25%;
     margin-bottom: 0px;
