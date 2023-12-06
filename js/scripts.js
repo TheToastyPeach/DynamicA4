@@ -83,7 +83,6 @@ buttonS.addEventListener('click', function() {
     animate.remove(dots);
     reanime(30, 50, 2, 0.5);
     slider.style.display = 'none';
-    animateSpinningShape();
 });
 
 buttonH.addEventListener('click', function() {
@@ -169,6 +168,7 @@ function createMessage(offPageTime) {
     button.addEventListener('click', function() {
         changeMessage("Lets take a moment to breathe");
         shrinkPage();
+        button.style.display = 'none';
     });
 
     messageDiv.appendChild(h2);
@@ -303,7 +303,18 @@ function createArrow () {
             arrow.style.display = 'none';
         }
     };
-}
+};
+
+//rotating circle 
+let circles = document.getElementById('.circle');
+
+anime({
+  targets: circles,
+  rotate: '1turn',
+  loop: true,
+  easing: 'linear',
+  duration: 1000,
+});
 
 
 

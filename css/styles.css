@@ -1,6 +1,7 @@
 html {
     background-image: linear-gradient( to bottom, white 5%, #f26ca7 60%);
     min-height: 100vh;
+    font-family: 'Quicksand', sans-serif;
 }
 
 body {
@@ -8,21 +9,27 @@ body {
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 4rem;
     color: white;
     text-align: center;
-    margin: 0;
-    padding: 35px;
     text-shadow: -1px 0 #f26ca7, 0 2px #f26ca7, 1px 0 #f26ca7, 0 -1px #f26ca7;
+    margin: 0;
 }
 
 h2 {
     font-size: 2rem;
     color: white;
     text-align: center;
-    margin: 0;
-    padding: 35px;
     text-shadow: -1px 0 #f26ca7, 0 1px #f26ca7, 1px 0 #f26ca7, 0 -1px #f26ca7;
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: white;
+    text-align: center;
+    text-shadow: -1px 0 #f26ca7, 0 1px #f26ca7, 1px 0 #f26ca7, 0 -1px #f26ca7;
+    margin: 0;
 }
 
 main {
@@ -104,23 +111,16 @@ main {
 }
 
 
-#Ui {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 #buttons {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
     margin: 10px;
 }
 
 #buttons button {
-    margin: 10px;
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -135,18 +135,33 @@ main {
     cursor: pointer;
 }
 
+#Ui {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    margin:75px;
+}
+
+#Ui h3 {
+    padding-bottom: 30px; 
+    text-align: left;
+}
+
+
 #header-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     width: 100%;
 }
 
-#header-container button {
+.tutorial-container button {
     margin: 0;
     padding: 0;
-    width: 35px; 
-    height: 35px;
+    width: 50px; 
+    height: 30px;
     border-radius: 50%;
     border: white 2px solid;
     background-color: transparent;
@@ -160,11 +175,11 @@ main {
 #length {
     background-image: linear-gradient(180deg, #F0A7A0, #f26ca7);
     min-height: 50vh;
-    min-width: 90vw;
+    min-width: 75vw;
     border-radius: 35px 35px 0px 0px;
-    margin-top: 45px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-top: 75px;
+    margin-left: 25%;
+    margin-right: 25%;
     margin-bottom: 0px;
 }
 
@@ -190,7 +205,13 @@ main {
 
 .tutorial-container {
     position: relative;
-    display: inline-block;
+    display: flex; /* This line will arrange the children of .tutorial-container in a row */
+    align-items: center; /* This line will vertically center the children */
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
 }
 
 .tutorial-box {
@@ -203,6 +224,8 @@ main {
     position: absolute;
     /* Ensure that the box is on the tpo of the other conetent */
      /* Also puts the box below the button */
+    top: 100%;
+    right: -125px;
     z-index: 1;
     width: 250px;
 }
@@ -210,9 +233,6 @@ main {
 .tutorial-container:hover .tutorial-box {
     visibility: visible;
 }
-
-
-
 
 #scrollArrow {
     position: fixed;
@@ -223,6 +243,18 @@ main {
     transform: translateY(-50%);
     display: none;
 }
+
+#graphics .circle {
+    position: absolute;
+    right: 20%;
+    top: 15%;
+    width: 350px;
+    height: 340px;
+    border-radius: 50%;
+    background-color: rgba(128, 70, 70, 0.144)
+};
+
+
 
 
 /* From co-pilot */
