@@ -40,8 +40,6 @@ document.addEventListener("visibilitychange", function() {
             start = null;
             totalUnfocusedTime = 0;
 
-            
-
         };
     };
 });
