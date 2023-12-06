@@ -35,6 +35,7 @@ document.addEventListener("visibilitychange", function() {
             console.log(oldHeight);
 
             createMessage(totalUnfocusedTime / 1000);
+            createArrow();
 
             //resets the start values
             start = null;
@@ -201,7 +202,7 @@ function changeMessage(newText) {
 
 //Slowly shrinks the page back to the smallest defined height in the css 
 function shrinkPage() {
-    const decreasePix = 5; 
+    const decreasePix = 15; 
     let lengthElement = document.getElementById('length');
     // Get the height of the 'length' div
     let currentHeight = lengthElement.offsetHeight; 
@@ -223,26 +224,32 @@ function shrinkPage() {
     };
     //Start decreasing the height
     decreaseHeight(); 
+
+
 };
+
+
 
 
 //just for fun, creates a div and spins it on the selected option 
 function animateSpinningShape(button) {
     // Remove existing spinning shape if it exists
     let existingShape = document.getElementById('spinningShape');
-    if (existingShape) existingShape.remove();
-
-    // Create a shape
+    if (existingShape) {
+        existingShape.remove();
+    };
     let shape = document.createElement('div');
     shape.id = 'spinningShape';
 
     // Apply CSS to position the shape under the button and style it
+    // I tried to use the css and html files, but it was messing with the animation, easier
+    // to apply everything here and reset it 
     shape.style.position = 'absolute';
     shape.style.width = '50px';
     shape.style.height = '50px';
     shape.style.borderRadius = '25%';
     shape.style.backgroundColor = '#fc655a42';
-    shape.style.top = button.offsetTop + 'px'; 
+    shape.style.top = button.offsetTop + 'px';
 
     //This is rough but its a ton of work to center all the buttons,
     //more lines of code than the function already is...
@@ -250,7 +257,6 @@ function animateSpinningShape(button) {
 
     document.body.appendChild(shape);
 
-    // Use anime.js to animate the shape to spin
     anime({
         targets: '#spinningShape',
         rotate: 360,
@@ -273,6 +279,31 @@ for (let button of buttons) {
         animateSpinningShape(button);
     });
 };
+
+
+//makes a floating arrow to indicate to scroll down the page 
+function createArrow () {
+    // Show the arrow when the page loads
+    let arrow = document.getElementById('scrollArrow');
+    arrow.style.display = 'block';
+
+    // Animate the arrow
+    anime({
+        targets: '#scrollArrow',
+        translateY: [-25, 0],
+        duration: 500,
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInOutSine'
+    });
+
+    // Hide the arrow when the user scrolls to the bottom
+    window.onscroll = function() {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            arrow.style.display = 'none';
+        }
+    };
+}
 
 
 
