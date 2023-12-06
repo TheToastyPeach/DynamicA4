@@ -1,4 +1,5 @@
 
+//----------------------------Old Idea--------------------------
 
 // function extendPageHeight() {
 //     let height = 100;
@@ -26,7 +27,7 @@
 //         console.log("The tab is active");
 //     }
 // });
-
+//----------------------------------------------------------------
 
 
 
@@ -36,11 +37,19 @@ let oldHeight = 0;
 
 //checks when a tab is not the focus anymore
 document.addEventListener("visibilitychange", function() {
+
+    let messageDiv = document.getElementById('message');
+    let h2 = messageDiv.getElementsByTagName('h2')[0];
+
     if (document.hidden) {
 
         //starts a timer with "date.now()" 
         start = Date.now();
         // oldHeight = document.documentElement.scrollHeight;
+        if (h2) {
+            messageDiv.removeChild(h2);
+        }
+
     } else {
         if (start) {
             //ensures that the page is at the top when tabbed back in
@@ -199,23 +208,24 @@ function createMessage(offPageTime) {
 function changeMessage(newText) {
     let messageDiv = document.getElementById('message');
     let h2 = messageDiv.getElementsByTagName('h2')[0];
-    let but = messageDiv.getElementsByTagName('button')[0];
+
+    // Check if h2 exists
+    if (h2) {
+        // Change the text of the existing h2
+        h2.textContent = newText;
+    } else {
+        // Create a new h2
+        h2 = document.createElement('h2');
+        h2.textContent = newText;
+        messageDiv.appendChild(h2);
+    }
+
+    // Fade in the h2 element
     anime({
-        targets: messageDiv,
-        opacity: 0,
+        targets: h2,
+        opacity: 1,
         duration: 1000, 
-        easing: 'easeInOutQuad',
-        
-        complete: function() {
-            h2.textContent = newText;
-            but.style.display = 'none';
-            anime({
-                targets: messageDiv,
-                opacity: 1,
-                duration: 1000, 
-                easing: 'easeInOutQuad'
-            });
-        }
+        easing: 'easeInOutQuad'
     });
 }
 
@@ -234,9 +244,25 @@ function shrinkPage() {
             setTimeout(decreaseHeight, 15); 
         }
         else if (currentHeight < 450) {
-            changeMessage("Lets take a moment to breathe");
+        let messageDiv = document.getElementById('message');
+        let but = messageDiv.getElementsByTagName('button')[0];
+        messageDiv.removeChild(but);
+
+        changeMessage("Welcome back to the top!");
         }
     };
     //Start decreasing the height
     decreaseHeight(); 
+}
+
+function checkMessage(newText, offPageTime) {
+    let messageDiv = document.getElementById('message');
+    let h2 = messageDiv.getElementsByTagName('h2')[0];
+
+    if (h2) {
+        changeMessage(newText);
+    } else {
+
+        createMessage(offPageTime);
+    }
 }
