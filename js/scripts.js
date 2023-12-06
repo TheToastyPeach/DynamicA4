@@ -88,11 +88,10 @@ for (let i = 1; i <= 150; i++){
 };
 
 
-
 //animating the dots
 const dots = document.querySelectorAll('.element');
 
-
+//initial animation for when the page loads 
 animate = anime({
         targets: dots,
         rotateZ: anime.stagger(10, {grid: [25, 6], from: 'center', axis: 'x'}),
@@ -118,6 +117,7 @@ buttonS.addEventListener('click', function() {
     animate.remove(dots);
     reanime(30, 50, 2, 0.5);
     slider.style.display = 'none';
+    animateSpinningShape();
 });
 
 buttonH.addEventListener('click', function() {
@@ -227,7 +227,7 @@ function changeMessage(newText) {
         duration: 1000, 
         easing: 'easeInOutQuad'
     });
-}
+};
 
 
 function shrinkPage() {
@@ -253,7 +253,7 @@ function shrinkPage() {
     };
     //Start decreasing the height
     decreaseHeight(); 
-}
+};
 
 function checkMessage(newText, offPageTime) {
     let messageDiv = document.getElementById('message');
@@ -262,7 +262,54 @@ function checkMessage(newText, offPageTime) {
     if (h2) {
         changeMessage(newText);
     } else {
-
         createMessage(offPageTime);
     }
-}
+};
+
+
+function animateSpinningShape(button) {
+    // Remove existing spinning shape if it exists
+    let existingShape = document.getElementById('spinningShape');
+    if (existingShape) existingShape.remove();
+
+    // Create a shape (e.g., a div) under the button
+    let shape = document.createElement('div');
+    shape.id = 'spinningShape';
+
+    // Apply CSS to position the shape under the button and style it
+    shape.style.position = 'absolute';
+    shape.style.width = '50px';
+    shape.style.height = '50px';
+    shape.style.borderRadius = '25%';
+    shape.style.backgroundColor = '#fc655a42';
+    shape.style.top = button.offsetTop + 'px'; 
+
+    //This is rough but its a ton of work to center all the buttons,
+    //more lines of code than the function already is...
+    shape.style.left = button.offsetLeft + 60 + 'px';
+
+    document.body.appendChild(shape);
+
+    // Use anime.js to animate the shape to spin
+    anime({
+        targets: '#spinningShape',
+        rotate: 360,
+        duration: 3000,
+        loop: true,
+        easing: 'linear',
+        borderRadius: ['25%', '45%', '25%'],
+        scale: [
+            {value: 0.1},
+            {value: 1}
+        ],
+
+    });
+};
+
+// Add event listener to each of the top 3 buttons for the shape command
+let buttons = document.getElementsByTagName('button');
+for (let button of buttons) {
+    button.addEventListener('click', function() {
+        animateSpinningShape(button);
+    });
+};

@@ -204,16 +204,12 @@ main {
     /* Ensure that the box is on the tpo of the other conetent */
      /* Also puts the box below the button */
     z-index: 1;
-    
-    
-    width: 250px; /* Width of the tutorial-box */
+    width: 250px;
 }
 
 .tutorial-container:hover .tutorial-box {
     visibility: visible;
 }
-
-
 
 
 
