@@ -1,18 +1,18 @@
 html {
-    background-image: linear-gradient( to bottom, white 5%, #f26ca7 60%);
+    background-image: linear-gradient( to bottom, #F9B9F2 5%, #03012C 60%);
     min-height: 100vh;
     font-family: 'Quicksand', sans-serif;
 }
 
 body {
-    background-image: linear-gradient( to bottom, white 5%, #f26ca7 60%);
+    background-image: linear-gradient( to bottom, #F9B9F2 5%, #03012C 60%);
 }
 
 h1 {
     font-size: 4rem;
     color: white;
     text-align: center;
-    text-shadow: -1px 0 #f26ca7, 0 2px #f26ca7, 1px 0 #f26ca7, 0 -1px #f26ca7;
+    text-shadow: -1px 0 #03012C, 0 12px #03012C, 1px 0 #03012C, 0 -1px #03012C;
     margin: 0;
 }
 
@@ -20,7 +20,7 @@ h2 {
     font-size: 2rem;
     color: white;
     text-align: center;
-    text-shadow: -1px 0 #f26ca7, 0 1px #f26ca7, 1px 0 #f26ca7, 0 -1px #f26ca7;
+    text-shadow: -1px 0 #03012C, 0 8px #03012C, 1px 0 #03012C, 0 -1px #03012C;
     margin: 0;
 }
 
@@ -28,7 +28,7 @@ h3 {
     font-size: 1.2rem;
     color: white;
     text-align: center;
-    text-shadow: -1px 0 #f26ca7, 0 1px #f26ca7, 1px 0 #f26ca7, 0 -1px #f26ca7;
+    text-shadow: -1px 0 #03012C, 0 1px #03012C, 1px 0 #03012C, 0 -1px #03012C;
     margin: 0;
 }
 
@@ -69,7 +69,7 @@ main {
     border-radius: 50%;
     width: 18px; 
     height: 18px; 
-    background: #f26ca7;
+    background: #361FAD;
     cursor: pointer; 
 }
 
@@ -83,7 +83,7 @@ main {
     border-radius: 50%;
     width: 18px; 
     height: 18px; 
-    background: #f26ca7;
+    background: #361FAD;
     cursor: pointer; 
 }
 
@@ -173,7 +173,7 @@ main {
 } 
 
 #length {
-    background-image: linear-gradient(180deg, #F0A7A0, #f26ca7);
+    background-image: linear-gradient(180deg, #361FAD, #03012C);
     min-height: 50vh;
     min-width: 75vw;
     border-radius: 35px 35px 0px 0px;
@@ -246,12 +246,12 @@ main {
 
 #graphics .circle {
     position: absolute;
-    right: 20%;
-    top: 15%;
+    right: 7%;
+    top: 20%;
     width: 350px;
     height: 340px;
     border-radius: 50%;
-    background-color: rgba(128, 70, 70, 0.144)
+    background-color: #F7996E
 };
 
 
