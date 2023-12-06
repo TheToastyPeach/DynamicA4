@@ -1,36 +1,4 @@
-
-//----------------------------Old Idea--------------------------
-
-// function extendPageHeight() {
-//     let height = 100;
-//     // how many pixels will be added after each delay
-//     const increasePix = 1; 
-
-//     const increaseHeight = () => {
-//         height += increasePix;
-//         document.getElementById('length').style.height = height + "px";
-//         // settimout to delay the recursion
-//         setTimeout(increaseHeight, 50); 
-//     };
-
-//     //calling the increase height function again so that it loops infinetly 
-//     increaseHeight(); 
-// }
-
-
-
-// document.addEventListener("visibilitychange", function() {
-//     if (document.hidden) {
-//         console.log("The tab is not active, extending");
-//         extendPageHeight();
-//     } else {
-//         console.log("The tab is active");
-//     }
-// });
-//----------------------------------------------------------------
-
-
-
+//some variables 
 let start;
 let totalUnfocusedTime = 0;
 let oldHeight = 0;
@@ -49,7 +17,7 @@ document.addEventListener("visibilitychange", function() {
         if (h2) {
             messageDiv.removeChild(h2);
         }
-
+    //when tabbed back in 
     } else {
         if (start) {
             //ensures that the page is at the top when tabbed back in
@@ -103,14 +71,13 @@ animate = anime({
 });
 
 
-
-
 //Get the buttons 
 let buttonS = document.getElementById('space');
 let buttonH = document.getElementById('held');
 let buttonC = document.getElementById('custom');
 
-//Button events 
+
+//----------------Button events------------------
 buttonS.addEventListener('click', function() {
     //if you don't restart the animation and remove the dots, they will lag the computer 
     animate.restart();
@@ -131,13 +98,17 @@ buttonH.addEventListener('click', function() {
 buttonC.addEventListener('click', function() {
     slider.style.display = 'flex';
 });
+//------------------------------------------------
+
 
 //pop up sliders 
 let slider = document.getElementById('customSpeedSlider');
 let range1 = document.getElementById('range1');
 let range1Value = range1.value;
 
-//getting the range of slider 1 and 2 
+
+
+//------------------getting the range of slider 1 and 2 ------------------
 range1.addEventListener('input', function() {
     range1Value = this.value;
     console.log(range1Value);
@@ -156,7 +127,7 @@ range2.addEventListener('input', function() {
     animate.remove(dots);
     reanime(30, 50, range1Value * 0.1, range1Value * 0.05);
 });
-
+//------------------------------------------------------------------------
 
 
 //reanimate the dots with the new values
@@ -184,6 +155,7 @@ function reanime(borderRadiusStart, borderRadiusEnd, breathDurationMultiplier, b
 };
 
 
+//create a message on the page, above the graphic content 
 function createMessage(offPageTime) {
     let messageDiv = document.getElementById('message');
 
@@ -204,7 +176,7 @@ function createMessage(offPageTime) {
     messageDiv.appendChild(button);
 };
 
-
+//change the created message with animations! 
 function changeMessage(newText) {
     let messageDiv = document.getElementById('message');
     let h2 = messageDiv.getElementsByTagName('h2')[0];
@@ -229,7 +201,7 @@ function changeMessage(newText) {
     });
 };
 
-
+//Slowly shrinks the page back to the smallest defined height in the css 
 function shrinkPage() {
     const decreasePix = 5; 
     let lengthElement = document.getElementById('length');
@@ -255,24 +227,14 @@ function shrinkPage() {
     decreaseHeight(); 
 };
 
-function checkMessage(newText, offPageTime) {
-    let messageDiv = document.getElementById('message');
-    let h2 = messageDiv.getElementsByTagName('h2')[0];
 
-    if (h2) {
-        changeMessage(newText);
-    } else {
-        createMessage(offPageTime);
-    }
-};
-
-
+//just for fun, creates a div and spins it on the selected option 
 function animateSpinningShape(button) {
     // Remove existing spinning shape if it exists
     let existingShape = document.getElementById('spinningShape');
     if (existingShape) existingShape.remove();
 
-    // Create a shape (e.g., a div) under the button
+    // Create a shape
     let shape = document.createElement('div');
     shape.id = 'spinningShape';
 
@@ -313,3 +275,36 @@ for (let button of buttons) {
         animateSpinningShape(button);
     });
 };
+
+
+
+
+//----------------------------Old Idea--------------------------
+
+// function extendPageHeight() {
+//     let height = 100;
+//     // how many pixels will be added after each delay
+//     const increasePix = 1; 
+
+//     const increaseHeight = () => {
+//         height += increasePix;
+//         document.getElementById('length').style.height = height + "px";
+//         // settimout to delay the recursion
+//         setTimeout(increaseHeight, 50); 
+//     };
+
+//     //calling the increase height function again so that it loops infinetly 
+//     increaseHeight(); 
+// }
+
+
+
+// document.addEventListener("visibilitychange", function() {
+//     if (document.hidden) {
+//         console.log("The tab is not active, extending");
+//         extendPageHeight();
+//     } else {
+//         console.log("The tab is active");
+//     }
+// });
+//----------------------------------------------------------------
