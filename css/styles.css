@@ -250,17 +250,15 @@ button {
 }
 
 
-#graphics .circle {
+.circle {
     position: absolute;
-    right: 7%;
-    top: 20%;
+    right: 19%;
+    top: 23%;
     width: 350px;
-    height: 347px;
+    height: 345px;
     border-radius: 50%;
     background-color: #F7996E
 };
-
-
 
 
 /* From co-pilot */
