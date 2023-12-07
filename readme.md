@@ -1,4 +1,5 @@
 # Blissful Balance
+Created by: Hans Bachman
 
 ## Description
 
