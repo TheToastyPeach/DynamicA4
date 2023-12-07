@@ -219,6 +219,7 @@ button {
 }
 
 .tutorial-box {
+    font-size: 1rem;
     visibility: hidden;
     background-color: white;
     color: #03012C;
@@ -234,7 +235,7 @@ button {
     width: 250px;
 }
 
-.tutorial-container:hover .tutorial-box {
+#help-button:hover .tutorial-box {
     visibility: visible;
 }
 
