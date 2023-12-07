@@ -18,7 +18,7 @@ Spaced Breath - a constant pulse to breathe along to
 Held Pause - as the name implies, creates a moment to hold you breath, with a slower intake
 Custom Speed - lets the user set their own speed for both pause length and the pulse rate
 
-## Made with 
+## Made with [Anime.js](https://animejs.com/)
 
-[Anime.js](https://animejs.com/). Using this library took away a lot of the stange concepts that come with css animations. Although it acheives similar results at surface level, it provides the user with a lot more freedom with the aniamtion and the values that correspond with said animations. It was fast and easy to use once you read a few stack overflow pages on how to use the functions. For some reason, the documentation seems to not cover some of the more complex features. Although they are not nessicary for the average animation, some of them were very useful. One such feature I made use of was assigning an anime.js function to a variable and then deleting the animation with variable.remove(). Other than that, the site is very user friendly and provides visual examples for most of the features that come with the lib! 
+ Using this library took away a lot of the stange concepts that come with css animations. Although it acheives similar results at surface level, it provides the user with a lot more freedom with the aniamtion and the values that correspond with said animations. It was fast and easy to use once you read a few stack overflow pages on how to use the functions. For some reason, the documentation seems to not cover some of the more complex features. Although they are not nessicary for the average animation, some of them were very useful. One such feature I made use of was assigning an anime.js function to a variable and then deleting the animation with variable.remove(). Other than that, the site is very user friendly and provides visual examples for most of the features that come with the lib! 
 
